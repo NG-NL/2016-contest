@@ -1,0 +1,44 @@
+.row {
+  display: flex;
+}
+
+.cell, .definition {
+  display: flex;
+  vertical-align: bottom;
+  height: 24px;
+  width: 24px;
+  border: solid 1px lightgrey;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: bold;
+}
+
+.definition.vertical {
+  height: 120px;
+  flex-direction: column;
+}
+
+.definition.vertical span {
+  margin-bottom: 6px;
+}
+
+.definition.horizontal {
+  width: 120px;
+}
+
+.definition.horizontal span {
+  margin-right: 6px;
+}
+
+.cell.unknown {
+  background-color: grey;
+}
+
+.cell.checked {
+  background-color: black;
+}
+
+.cell.unchecked {
+  background-color: white;
+}
+
