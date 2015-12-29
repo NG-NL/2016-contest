@@ -4,61 +4,98 @@ var puzzle = require('./nonogramData');
 
 var app = angular.module('nonogramApp', []);
 
+function Cell() {
+  this.value = 1;
+}
+
+Cell.prototype.toggle = function () {
+  this.value = (this.value + 1) % 3;
+};
+
+Cell.prototype.toString = function () {
+  return String(this.value);
+};
+
 app.component('nonogramPuzzle', {
-  bindings: {
-  },
   controller: function () {
-    this.columns = puzzle.columns;
-    this.rows = puzzle.rows;
+    this.columnDefinitions = puzzle.columns;
+    this.rowDefinitions = puzzle.rows;
+    this.rows = [];
+    this.columns = [];
+
+    for (var row = 0; row < puzzle.rows.length; row++) {
+      for (var col = 0; col < puzzle.columns.length; col++) {
+        var cell = new Cell(row, col);
+        this.rows[row] = this.rows[row] || [];
+        this.rows[row][col] = cell;
+
+        this.columns[col] = this.columns[col] || [];
+        this.columns[col][row] = cell;
+      }
+    }
   },
-  template:
-    '<div class="row">' +
-    '  <nonogram-definition><!-- empty top-left --></nonogram-definition>' +
-    '  <nonogram-definition ng-repeat="col in nonogramPuzzle.columns" x="$index" definition="col">' +
-    '  </nonogram-definition>' +
-    '</div>' +
-    '<div class="row" ng-repeat="row in nonogramPuzzle.rows">' +
-    '  <nonogram-definition y="$index" definition="row"></nonogram-definition>' +
-    '  <nonogram-cell ng-repeat="col in nonogramPuzzle.columns" x="$parent.$index" y="$index"></nonogram-cell>' +
-    '</div>'
+  template: '<div class="row">' +
+            '  <div><span class="definition horizontal vertical">&nbsp;<!-- empty top-left --></span></div>' +
+            '  <nonogram-definition ng-repeat="col in nonogramPuzzle.columns" x="$index" cells="col"' +
+            '    definition="nonogramPuzzle.columnDefinitions[$index]" ng-class="{' +
+            '      borderright: ($index % 5) === 4 && !$last' +
+            '  }">' +
+            '  </nonogram-definition>' +
+            '</div>' +
+            '<div class="row" ng-repeat="row in nonogramPuzzle.rows" ng-class="{' +
+            '      borderbottom: ($index % 5) === 4 && !$last' +
+            '  }">' +
+            '  <nonogram-definition y="$index" cells="row" definition="nonogramPuzzle.rowDefinitions[$index]">' +
+            '  </nonogram-definition>' +
+            '  <nonogram-cell ng-repeat="col in nonogramPuzzle.columns" cell="row[$index]" ng-class="{' +
+            '      borderright: ($index % 5) === 4 && !$last' +
+            '  }">' +
+            '  </nonogram-cell>' +
+            '</div>'
 });
 
 app.component('nonogramDefinition', {
   bindings: {
     definition: '=',
+    cells: '=',
     x: '=',
     y: '='
   },
   controller: function () {
+    var definitionRegex = new RegExp('^[01]*2{' + this.definition.join('}[01]+2{') + '}[01]*$');
+    var notWrongRegex = new RegExp('^[01]*[012]{' + this.definition.join('}[01]+[012]{') + '}[01]*$');
+
+    this.isValid = function () {
+      return definitionRegex.test(this.cells.join(''));
+    };
+
+    this.isWrong = function () {
+      return !notWrongRegex.test(this.cells.join(''));
+    }
   },
-  template:
-  '<span class="definition" ng-class="{' +
-  '  horizontal: nonogramDefinition.x === undefined,' +
-  '  vertical: nonogramDefinition.y === undefined' +
-  '}">' +
-  '  <span ng-repeat="def in nonogramDefinition.definition track by $index">{{def}}</span>' +
-  '  <span ng-if="nonogramDefinition.definition === undefined">&nbsp;</span>' +
-  '</span>'
+  template: '<span class="definition" ng-class="{' +
+            '  horizontal: nonogramDefinition.x === undefined,' +
+            '  vertical: nonogramDefinition.y === undefined,' +
+            '  valid: nonogramDefinition.isValid(),' +
+            '  wrong: nonogramDefinition.isWrong()' +
+            '}">' +
+            '  <span ng-repeat="def in nonogramDefinition.definition track by $index">{{def}}</span>' +
+            '</span>'
 });
 
 app.component('nonogramCell', {
   bindings: {
-    x: '=',
-    y: '='
+    cell: '='
   },
-  controller: function ($log) {
-    this.val = 0;
-    this.toggle = function () {
-      $log.log('Clicked (' + this.x + ',' + this.y + ')');
-      this.val = (this.val + 1) % 3;
-    }
+  controller: function () {
+    this.val = 1;
+    this.toggle = this.cell.toggle.bind(this.cell);
   },
-  template:
-    '<span ng-click="nonogramCell.toggle()" class="cell" ng-class="{' +
-    '  unknown : nonogramCell.val === 0,' +
-    '  checked: nonogramCell.val === 1,' +
-    '  unchecked: nonogramCell.val === 2' +
-    '}"></span>'
+  template: '<span ng-click="nonogramCell.toggle()" class="cell" ng-class="{' +
+            '  unchecked : nonogramCell.cell.value === 0,' +
+            '  unknown: nonogramCell.cell.value === 1,' +
+            '  checked: nonogramCell.cell.value === 2' +
+            '}"></span>'
 });
 
 
