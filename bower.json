@@ -19,6 +19,7 @@
   ],
   "dependencies": {
     "require1k": "1.0.0",
-    "angular": "1.5.0-rc.0"
+    "angular": "1.5.0-rc.0",
+    "lodash": "~3.10.1"
   }
 }

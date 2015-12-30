@@ -52,11 +52,22 @@
   /*todo kruisje svg*/
 }
 
+.cell.suggested {
+  background-color: yellow;
+}
+
 .borderright > * {
   border-right: solid 2px black;
 }
 
 .borderbottom > * {
   border-bottom: solid 2px black;
+}
+
+button {
+  font-size: large;
+  margin: 8px;
+  width: 90px;
+  height: 32px;
 }
 
