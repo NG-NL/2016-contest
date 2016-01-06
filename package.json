@@ -25,5 +25,8 @@
   "homepage": "https://github.com/kwarkjes/2016-contest#readme",
   "dependencies": {
     "angular": "^1.4.8"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5"
   }
 }
