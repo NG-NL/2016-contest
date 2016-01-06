@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/kwarkjes/2016-contest/issues"
   },
-  "homepage": "https://github.com/kwarkjes/2016-contest#readme"
+  "homepage": "https://github.com/kwarkjes/2016-contest#readme",
+  "dependencies": {
+    "angular": "^1.4.8"
+  }
 }
