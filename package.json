@@ -1,0 +1,26 @@
+{
+  "name": "angular-monogram-game",
+  "version": "1.0.0",
+  "description": "Angular Monogram Game",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwarkjes/2016-contest.git"
+  },
+  "keywords": [
+    "Angular",
+    "Monogram",
+    "Game",
+    "HTML",
+    "JS"
+  ],
+  "author": "Yassine Elouazzani <yassine@polderknowledge.nl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kwarkjes/2016-contest/issues"
+  },
+  "homepage": "https://github.com/kwarkjes/2016-contest#readme"
+}
