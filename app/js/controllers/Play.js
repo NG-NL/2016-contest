@@ -82,6 +82,10 @@ module.exports = function($scope, Board) {
     var board = new Board(rows, columns);
     board.setSquareSize(20);
     board.generate();
-    $scope.board = board;
-    console.log(board.cells[100]);
+
+    $scope.game = {
+        board: board,
+        rows: rows,
+        columns: columns,
+    };
 };

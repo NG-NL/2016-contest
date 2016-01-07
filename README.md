@@ -1,4 +1,4 @@
-# Monogram game
+# Nonogram game
 
 ## Requirements
 - npm

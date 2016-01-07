@@ -1,7 +1,7 @@
 {
-  "name": "angular-monogram-game",
+  "name": "angular-nonogram-game",
   "version": "1.0.0",
-  "description": "Angular Monogram Game",
+  "description": "Angular Nonogram Game",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,7 @@
   },
   "keywords": [
     "Angular",
-    "Monogram",
+    "Nonogram",
     "Game",
     "HTML",
     "JS"
@@ -24,10 +24,12 @@
   },
   "homepage": "https://github.com/kwarkjes/2016-contest#readme",
   "dependencies": {
+    "angular-ui-router": "^0.2.15",
     "angular": "^1.4.8"
   },
   "devDependencies": {
-    "angular-ui-router": "^0.2.15",
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "grunt-sass": "^1.1.0",
+    "shelljs": "^0.5.3"
   }
 }

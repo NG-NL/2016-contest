@@ -1,0 +1,125 @@
+$color-white: #fff;
+$cell-border: #ddd;
+$cell-height: 20px;
+$cell-width: 20px;
+$row-digits-backgound: #eee;
+$row-digits-width: 150px;
+$column-digits-height: 150px;
+$cell-fill-background: #449;
+$cell-empty-color: #a33;
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans', Tahoma, sans-serif;
+}
+
+html {
+  font-size: 14px;
+}
+
+// Box sizing
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+// clearfix
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.board {
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    border: 1px solid $cell-border;
+    cursor: pointer;
+    float: left;
+    height: 20px;
+    width: 20px;
+
+    span {
+      color: $cell-empty-color;
+      display: block;
+      height: $cell-height;
+      line-height: $cell-height;
+      text-align: center;
+      width: $cell-width;
+
+      @each $prefix in ('' '-moz-' '-webkit-') {
+        #{$prefix}user-select: none;
+      }
+    }
+
+    &.fill span {
+      background: $cell-fill-background;
+    }
+
+    // &.empty:before
+
+    &.last {
+      clear: left;
+    }
+  }
+}
+
+// Rows numbers
+.row-digits {
+  background: $row-digits-backgound;
+  float: left;
+  padding-top: $column-digits-height;
+  width: $row-digits-width;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      border-top: 1px solid $color-white;
+      display: block;
+      height: $cell-height;
+      padding: 0 10px;
+      text-align: right;
+    }
+  }
+}
+
+// Rows numbers
+.column-digits {
+  background: $row-digits-backgound;
+  float: left;
+  height: $column-digits-height;
+
+  ul {
+    font-size: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      border-left: 1px solid $color-white;
+      display: inline-block;
+      font-size: 1rem;
+      height: $column-digits-height;
+      padding: 10px 0;
+      text-align: center;
+      vertical-align: top;
+      width: $cell-height;
+    }
+
+    span {
+      display: block;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 'use strict';
 
-var app = require('angular').module('MonogramGame', [
+var app = require('angular').module('NonogramGame', [
     require('angular-ui-router'),
 ]);
 

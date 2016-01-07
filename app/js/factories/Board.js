@@ -27,12 +27,17 @@ module.exports = function (Square) {
         }
 
         this.generate = function() {
+            var lastRow;
             x.forEach(function(row, rowIndex) {
                 y.forEach(function(column, columnIndex) {
                     var cell = new Square(columnIndex, rowIndex);
                     cell.setSize(self.square.size);
                     cell.setUnit(self.square.unit);
+                    if (lastRow !== rowIndex) {
+                        cell.last = true;
+                    }
                     self.cells.push(cell);
+                    lastRow = rowIndex;
                 });
             });
         }
