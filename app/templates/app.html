@@ -6,7 +6,7 @@
             empty: cell.status == 2,
         }"
         ng-click="cell.changeStatus()"
-        ng-style="cell.style">
+        ng-style="cell.getStyle()">
     </li>
 </ul>
 
@@ -17,10 +17,10 @@
     }
     li {
         position: absolute;
-        height: 28px;
-        line-height: 28px;
+        
+
         text-align: center;
-        width: 28px;
+
         border: 1px solid #ddd;
         cursor: pointer;
         -moz-user-select: none;

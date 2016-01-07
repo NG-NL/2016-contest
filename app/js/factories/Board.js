@@ -12,6 +12,7 @@ module.exports = function (Square) {
             return false;
         }
 
+        var self = this;
         this.count = {
             columns: y.length,
             rows: x.length,
@@ -20,14 +21,29 @@ module.exports = function (Square) {
         this.y = y;
         this.cells = [];
 
-        var self = this;
+        this.square = {
+            size: 30,
+            unit: 'px',
+        }
 
-        x.forEach(function(row, rowIndex) {
-            y.forEach(function(column, columnIndex) {
-                var cell = new Square(columnIndex, rowIndex);
-                self.cells.push(cell);
+        this.generate = function() {
+            x.forEach(function(row, rowIndex) {
+                y.forEach(function(column, columnIndex) {
+                    var cell = new Square(columnIndex, rowIndex);
+                    cell.setSize(self.square.size);
+                    cell.setUnit(self.square.unit);
+                    self.cells.push(cell);
+                });
             });
-        });
+        }
+
+        this.setSquareSize = function(size) {
+            this.square.size = size;
+        };
+
+        this.setSquareUnit = function(unit) {
+            this.square.unit = unit;
+        };
 
         return this;
     }

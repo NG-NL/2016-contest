@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($scope, Board, Square) {
+module.exports = function($scope, Board) {
 
     // counted from left to right
     var rows = [
@@ -80,5 +80,8 @@ module.exports = function($scope, Board, Square) {
 
 
     var board = new Board(rows, columns);
+    board.setSquareSize(20);
+    board.generate();
     $scope.board = board;
+    console.log(board.cells[100]);
 };
