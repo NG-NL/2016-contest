@@ -4,5 +4,11 @@ var app = require('angular').module('MonogramGame', [
     require('angular-ui-router'),
 ]);
 
-var indexController = app.controller('Play', require('./app/js/controllers/Play'));
+// Controllers
+app.controller('Play', require('./app/js/controllers/Play'));
+
+// Factories
+app.factory('Board', require('./app/js/factories/Board'));
+app.factory('Square', require('./app/js/factories/Square'));
+
 app.config(require('./app/js/config'));

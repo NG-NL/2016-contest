@@ -1,1 +1,36 @@
-hoi
+<!-- tofo inline styling is hmmmm :( -->
+<ul>
+    <li ng-repeat="cell in board.cells"
+        ng-class="{
+            fill: cell.status == 1,
+            empty: cell.status == 2,
+        }"
+        ng-click="cell.changeStatus()"
+        ng-style="cell.style">
+    </li>
+</ul>
+
+<!-- TODO create scss -->
+<style>
+    ul {
+        list-style: none;
+    }
+    li {
+        position: absolute;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        width: 28px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+    }
+    li.fill {
+        background: blue
+    }
+    li.empty:before {
+        content: 'X';
+        color: #aaa;
+    }
+</style>
