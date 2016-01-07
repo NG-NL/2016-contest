@@ -13,26 +13,16 @@ module.exports = function (Square) {
         }
 
         var self = this;
-        this.count = {
-            columns: y.length,
-            rows: x.length,
-        };
+
         this.x = x;
         this.y = y;
         this.cells = [];
-
-        this.square = {
-            size: 30,
-            unit: 'px',
-        }
 
         this.generate = function() {
             var lastRow;
             x.forEach(function(row, rowIndex) {
                 y.forEach(function(column, columnIndex) {
                     var cell = new Square(columnIndex, rowIndex);
-                    cell.setSize(self.square.size);
-                    cell.setUnit(self.square.unit);
                     if (lastRow !== rowIndex) {
                         cell.last = true;
                     }
@@ -41,14 +31,6 @@ module.exports = function (Square) {
                 });
             });
         }
-
-        this.setSquareSize = function(size) {
-            this.square.size = size;
-        };
-
-        this.setSquareUnit = function(unit) {
-            this.square.unit = unit;
-        };
 
         return this;
     }

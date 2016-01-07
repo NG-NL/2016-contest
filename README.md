@@ -1,4 +1,5 @@
 # Nonogram game
+![Example](example.png)
 
 ## Requirements
 - npm

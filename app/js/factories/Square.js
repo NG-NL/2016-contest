@@ -9,37 +9,11 @@ module.exports = function () {
         var self = this;
         this.x = x;
         this.y = y;
-        this.size = 30;
-        this.unit = 'px';
-        this.left = (this.x * self.size) + this.unit;
-        this.top = (this.y * self.size) + this.unit;
-        this.style = {
-            left: this.left,
-            top: this.top,
-        };
 
         // 0 => undefined (not clicked yet)
         // 1 => Filled
         // 2 => Empty
         this.status = 0;
-
-        this.getStyle = function() {
-            return {
-                lineHeight: this.size + this.unit,
-                height: this.size + this.unit,
-                width: this.size + this.unit,
-                left: (this.x * this.size) + this.unit,
-                top: (this.y * this.size) + this.unit,
-            }
-        };
-
-        this.setSize = function(size) {
-            this.size = size;
-        };
-
-        this.setUnit = function(unit) {
-            this.unit = unit;
-        };
 
         this.changeStatus = function() {
             if (this.status < 2) {

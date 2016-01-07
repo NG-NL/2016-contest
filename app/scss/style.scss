@@ -3,13 +3,14 @@ $cell-border: #ddd;
 $cell-height: 20px;
 $cell-width: 20px;
 $row-digits-backgound: #eee;
-$row-digits-width: 150px;
-$column-digits-height: 150px;
+$row-digits-width: 70px;
+$column-digits-height: 70px;
 $cell-fill-background: #449;
 $cell-empty-color: #a33;
 
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans', Tahoma, sans-serif;
+  margin: 0;
 }
 
 html {
@@ -36,10 +37,12 @@ html {
 }
 
 .board {
-  float: left;
+  left: $row-digits-width;
   list-style: none;
   margin: 0;
   padding: 0;
+  position: absolute;
+  top: $column-digits-height;
 
   li {
     border: 1px solid $cell-border;
