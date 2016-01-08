@@ -6,7 +6,7 @@ module.exports = function($scope, Board, $rootScope) {
         return array[Math.floor(Math.random() * array.length)];
     };
 
-    $rootScope.bodyClass = 'bg-' + rand([1,2,3]);
+    $rootScope.bodyClass = 'bg-' + rand([1,2,3,4,5,6]);
 
     var data = require('../../../nonogramData');
 
@@ -27,13 +27,13 @@ module.exports = function($scope, Board, $rootScope) {
         ]
     };
 
-    var board = new Board(easyData.rows, easyData.columns);
+    var board = new Board(data.rows, data.columns);
     board.generate();
 
 
     $scope.game = {
         board: board,
-        rows: easyData.rows,
-        columns: easyData.columns,
+        rows: data.rows,
+        columns: data.columns,
     };
 };

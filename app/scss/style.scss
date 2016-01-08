@@ -1,12 +1,15 @@
 $color-white: #fff;
+$color-black: #000;
 $cell-border: #ddd;
-$cell-height: 20px;
-$cell-width: 20px;
-$row-digits-backgound: #eee;
-$row-digits-width: 70px;
-$column-digits-height: 70px;
-$cell-fill-background: #449;
-$cell-empty-color: #a33;
+$cell-height: 2rem;
+$cell-background: transparent;
+$cell-width: 2rem;
+$row-digits-backgound: rgba(#eee, .02);
+$row-digits-width: 8.5rem;
+$row-digits-color: #fff;
+$column-digits-height: 8.5rem;
+$cell-fill-background: rgba(#449, .8);
+$cell-empty-background: $color-black;
 
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans', Tahoma, sans-serif;
@@ -14,17 +17,17 @@ body {
 }
 
 body,
-.game {
+.wrapper {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-@for $i from 1 through 3 {
+@for $i from 1 through 10 {
   body.bg-#{$i} {
     background-image: url('images/backgrounds/#{$i}.jpg');
 
-    .game {
+    .wrapper {
       background-image: url('images/backgrounds/#{$i}-blurred.jpg');
     }
   }
@@ -33,6 +36,24 @@ body,
 
 html {
   font-size: 14px;
+}
+
+@media screen and (max-height: 1150px), screen and (max-width: 1150px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-height: 1000px), screen and (max-width: 1000px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-height: 800px), screen and (max-width: 800px) {
+    html {
+        font-size: 8px;
+    }
 }
 
 [ui-view="app"] {
@@ -59,18 +80,19 @@ html {
 }
 
 .game {
-  width: 70%;
-  height: 70%;
+  display: flex;
+  height: 100%;
   margin: 0 auto;
-  top: 15%;
   position: relative;
-  border-radius: 5px;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 20px;
-  text-align: center;
-  box-sizing: border-box;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+
+  .wrapper {
+    border: 1px solid rgba($color-white, .2);
+    border-radius: 5px;
+    box-shadow: 0 20px 30px rgba($color-black, .6);
+    margin: auto;
+    position: relative;
+    text-shadow: 0 1px 1px rgba($color-black, .4);
+  }
 }
 
 .board {
@@ -82,18 +104,16 @@ html {
   top: $column-digits-height;
 
   li {
-    border: 1px solid $cell-border;
+    background: $cell-background;
+    border: 1px solid rgba($cell-border, .05);
     cursor: pointer;
     float: left;
-    height: 20px;
-    width: 20px;
+    height: $cell-height;
+    width: $cell-width;
 
     span {
-      color: $cell-empty-color;
       display: block;
       height: $cell-height;
-      line-height: $cell-height;
-      text-align: center;
       width: $cell-width;
 
       @each $prefix in ('' '-moz-' '-webkit-') {
@@ -101,11 +121,15 @@ html {
       }
     }
 
-    &.fill span {
-      background: $cell-fill-background;
+    &.empty {
+      background: $cell-empty-background;
+      border: 0 none;
     }
 
-    // &.empty:before
+    &.fill {
+      background: $cell-fill-background;
+      border: 0 none;
+    }
 
     &.last {
       clear: left;
@@ -126,9 +150,11 @@ html {
     padding: 0;
 
     li {
-      border-top: 1px solid $color-white;
+      border-top: 1px solid rgba($color-white, .1);
+      color: $row-digits-color;
       display: block;
       height: $cell-height;
+      line-height: $cell-height;
       padding: 0 10px;
       text-align: right;
     }
@@ -142,19 +168,21 @@ html {
   height: $column-digits-height;
 
   ul {
+    display: table;
     font-size: 0;
     list-style: none;
     margin: 0;
     padding: 0;
 
     li {
-      border-left: 1px solid $color-white;
-      display: inline-block;
+      border-left: 1px solid rgba($color-white, .1);
+      color: $row-digits-color;
+      display: table-cell;
       font-size: 1rem;
       height: $column-digits-height;
       padding: 10px 0;
       text-align: center;
-      vertical-align: top;
+      vertical-align: bottom;
       width: $cell-height;
     }
 
