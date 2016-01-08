@@ -9,9 +9,17 @@ I've implemented the nonogram web game using Angular 1.5, and took the opportuni
 * Angular 1.5 `.component()` method
 * CSS Flexbox, see also http://flexboxfroggy.com/ :)
 * Require1k as a CommonJS module loader in the browser
+* Writing NodeJS unit test with Mocha
 
-## Running
+## Demo!
+
+Play the game at http://oliver3.nl/nonogram
+
+## Running locally
 
 * Run `bower install`
 * Open the index.html using http, e.g. using IntelliJ "Open in Browser" or with `npm install -g http-server && http-server`
+
+You can run the mocha tests with `mocha nonogram-solver.spec.js`
+
 
