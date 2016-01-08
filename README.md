@@ -30,7 +30,7 @@ If you are not able to do this, you can [mail](mailto:info@ng-nl.org) the zipped
 
 ## Judging
 
-The contest ends at January 11th, 2016, 00:00 CET. After this deadline, submitted games are excluded from the contest.
+<b>Update:</b> The contest ends at January 14th, 2016, 00:00 CET. After this deadline, submitted games are excluded from the contest.
 The NG-NL conference organizing committee will then select the winner and two runner-ups. 
 
 ## Prizes
