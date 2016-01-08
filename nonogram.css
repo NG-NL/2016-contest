@@ -1,0 +1,73 @@
+.row {
+  display: flex;
+}
+
+.cell, .definition {
+  display: flex;
+  vertical-align: bottom;
+  height: 24px;
+  width: 24px;
+  border: solid 1px grey;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: bold;
+  font-family: Lato, sans-serif;
+}
+
+.definition.vertical {
+  height: 120px;
+  flex-direction: column;
+}
+
+.definition.vertical span {
+  margin-bottom: 8px;
+}
+
+.definition.horizontal {
+  width: 120px;
+}
+
+.definition.horizontal span {
+  margin-right: 8px;
+}
+
+.definition.valid {
+  background-color: limegreen;
+}
+
+.definition.wrong {
+  background-color: orangered;
+}
+
+.cell.unknown {
+  background-color: lightgrey;
+}
+
+.cell.checked {
+  background-color: black;
+}
+
+.cell.unchecked {
+  background-color: white;
+  /*todo kruisje svg*/
+}
+
+.cell.suggested {
+  background-color: yellow;
+}
+
+.borderright > * {
+  border-right: solid 2px black;
+}
+
+.borderbottom > * {
+  border-bottom: solid 2px black;
+}
+
+button {
+  font-size: large;
+  margin: 8px;
+  width: 90px;
+  height: 32px;
+}
+
