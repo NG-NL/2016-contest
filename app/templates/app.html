@@ -1,28 +1,29 @@
 <!-- tofo inline styling is hmmmm :( -->
-
-<div class="row-digits clearfix">
-    <ul class="legend rows">
-        <li ng-repeat="row in game.rows">
-            {{ row.join(' - ') }}
+<div class="game blurred-bg">
+    <div class="row-digits clearfix">
+        <ul class="legend rows">
+            <li ng-repeat="row in game.rows">
+                {{ row.join(' - ') }}
+            </li>
+        </ul>
+    </div>
+    <div class="column-digits clearfix">
+        <ul>
+            <li ng-repeat="column in game.columns">
+                <span ng-repeat="n in column track by $index">{{ n }}</span>
+            </li>
+        </ul>
+    </div>
+    <ul class="board clearfix">
+        <li ng-repeat="cell in game.board.cells"
+            ng-class="{
+                fill: cell.status == 1,
+                empty: cell.status == 2,
+                last: cell.last == true,
+            }"
+            ng-click="cell.changeStatus()"
+            >
+            <span>{{ cell.status == 2 ? 'X' : '' }}</span>
         </li>
     </ul>
-</div>
-<div class="column-digits clearfix">
-    <ul>
-        <li ng-repeat="column in game.columns">
-            <span ng-repeat="n in column track by $index">{{ n }}</span>
-        </li>
-    </ul>
-</div>
-<ul class="board clearfix">
-    <li ng-repeat="cell in game.board.cells"
-        ng-class="{
-            fill: cell.status == 1,
-            empty: cell.status == 2,
-            last: cell.last == true,
-        }"
-        ng-click="cell.changeStatus()"
-        >
-        <span>{{ cell.status == 2 ? 'X' : '' }}</span>
-    </li>
-</ul>
+<div>

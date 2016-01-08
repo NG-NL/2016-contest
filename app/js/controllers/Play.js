@@ -1,6 +1,12 @@
 'use strict';
 
-module.exports = function($scope, Board) {
+module.exports = function($scope, Board, $rootScope) {
+
+    var rand = function(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    };
+
+    $rootScope.bodyClass = 'bg-' + rand([1,2,3]);
 
     var data = require('../../../nonogramData');
 
