@@ -13,8 +13,30 @@ body {
   margin: 0;
 }
 
+body,
+.game {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@for $i from 1 through 3 {
+  body.bg-#{$i} {
+    background-image: url('images/backgrounds/#{$i}.jpg');
+
+    .game {
+      background-image: url('images/backgrounds/#{$i}-blurred.jpg');
+    }
+  }
+}
+
+
 html {
   font-size: 14px;
+}
+
+[ui-view="app"] {
+    height: 100vh;
 }
 
 // Box sizing
@@ -34,6 +56,21 @@ html {
 
 .clearfix:after {
   clear: both;
+}
+
+.game {
+  width: 70%;
+  height: 70%;
+  margin: 0 auto;
+  top: 15%;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 .board {
