@@ -3,20 +3,20 @@
     <div class="wrapper">
         <div class="row-digits clearfix">
             <ul class="legend rows">
-                <li ng-repeat="row in game.rows">
+                <li ng-repeat="row in board.x">
                     {{ row.join(' - ') }}
                 </li>
             </ul>
         </div>
         <div class="column-digits clearfix">
             <ul>
-                <li ng-repeat="column in game.columns">
+                <li ng-repeat="column in board.y">
                     <span ng-repeat="n in column track by $index">{{ n }}</span>
                 </li>
             </ul>
         </div>
         <ul class="board clearfix">
-            <li ng-repeat="cell in game.board.cells"
+            <li ng-repeat="cell in board.cells"
                 ng-class="{
                     fill: cell.status == 1,
                     empty: cell.status == 2,
@@ -29,3 +29,7 @@
         </ul>
     <div>
 <div>
+<select ng-model="board" ng-options="board as board.name for board in boards"
+style="position: fixed;
+bottom: 40px; left: 40px;"
+></select>
