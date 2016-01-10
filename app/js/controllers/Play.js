@@ -24,6 +24,7 @@ module.exports = ['$scope', 'Board', '$rootScope', 'BoardsCollection', 'jQuery',
             var board = new Board(data.rows, data.columns);
             board.generate();
             board.name = data.name;
+
             $scope.boards.push(board);
         });
 

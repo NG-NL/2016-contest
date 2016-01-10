@@ -13,6 +13,7 @@ module.exports = function () {
         // 0 => undefined (not clicked yet)
         // 1 => Filled
         // 2 => Empty
+        // 3 => Hint
         this.status = 0;
 
         this.changeStatus = function() {

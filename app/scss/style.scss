@@ -8,8 +8,9 @@ $row-digits-backgound: rgba(#eee, .02);
 $row-digits-width: 8.5rem;
 $row-digits-color: #fff;
 $column-digits-height: 8.5rem;
-$cell-fill-background: rgba(#449, .8);
-$cell-empty-background: $color-black;
+$cell-fill-background: #e91e63;
+$cell-empty-background: $color-white;
+$cell-empty-color: #ff5722;
 
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans', Tahoma, sans-serif;
@@ -94,9 +95,14 @@ html {
     width: $cell-width;
 
     span {
+      color: $cell-empty-color;
       display: block;
+      font-size: 2rem;
       height: $cell-height;
+      line-height: 2rem;
+      text-align: center;
       width: $cell-width;
+      text-shadow: none;
 
       @each $prefix in ('' '-moz-' '-webkit-') {
         #{$prefix}user-select: none;

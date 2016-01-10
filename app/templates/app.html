@@ -24,8 +24,16 @@
                 }"
                 ng-click="cell.changeStatus()"
                 >
-                <span>{{ cell.status == 2 ? 'X' : '' }}</span>
+                <span>{{ cell.status == 2 ? '×' : '' }}</span>
             </li>
         </ul>
     <div>
 <div>
+<button
+    ng-click="help()"
+    style="position: fixed;bottom: 40px; right: 40px;"
+    >help</button>
+<select ng-model="board"
+    ng-options="board as board.name for board in boards"
+    style="position: fixed;bottom: 40px; left: 40px;"
+></select>
