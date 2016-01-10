@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'default',
+    name: 'NG-NL',
     rows: [
         [2],
         [7],
