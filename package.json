@@ -24,8 +24,9 @@
   },
   "homepage": "https://github.com/kwarkjes/2016-contest#readme",
   "dependencies": {
+    "angular": "^1.4.8",
     "angular-ui-router": "^0.2.15",
-    "angular": "^1.4.8"
+    "jquery": "^2.2.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
