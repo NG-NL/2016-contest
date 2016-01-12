@@ -41,4 +41,6 @@ The NG-NL conference organizing committee will then select the winner and two ru
 
 ## Award ceremony
 
-The prizes will be handed out at the upcoming Xebia Open Kitchen on Angular. More info soon.
+The prizes will be handed out at the upcoming Xebia Open Kitchen on Angular. See 
+[xebia.com](https://xebia.com/events/open-kitchen-introduction-angularjs-2.0-and-contest-to-win-ng-nl-2016-tickets) for
+more information
