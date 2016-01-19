@@ -8,12 +8,16 @@ module.exports = ['$scope', 'Board', '$rootScope', 'BoardsCollection', 'jQuery',
         };
         $rootScope.bodyClass = 'bg-' + rand([1,2,3,4,5,6]);
 
+        $scope.playing = false;
+        $scope.timer = 0;
         $scope.boards = [];
         $scope.board = {};
 
         $scope.$watch('board', function (value) {//I change here
             var val = value || null;
             if (val) {
+                $scope.playing = false;
+                $scope.timer = 0;
                 var defaultFontSize = '16px';
                 $('html').css('font-size', defaultFontSize);
                 $t(resizeBoardIfNeeded, 50);
@@ -29,6 +33,20 @@ module.exports = ['$scope', 'Board', '$rootScope', 'BoardsCollection', 'jQuery',
         });
 
         $scope.board = $scope.boards[0];
+
+        $scope.startPlaying  = function() {
+            $scope.playing = !$scope.playing;
+            startTimer();
+        };
+
+        var startTimer = function() {
+            if ($scope.playing) {
+                $t(function() {
+                    $scope.timer = $scope.timer + 1;
+                    startTimer();
+                }, 1000);
+            }
+        };
 
         var resizeBoardIfNeeded = function() {
             if (

@@ -23,6 +23,11 @@ app.factory('_', ['$window', function ($window) {
 // Services
 app.service('BoardsCollection', require('./app/js/services/BoardsCollection'));
 
+// Directives
+app.directive('menu', require('./app/js/directives/menu'));
+
+// Filters
+app.filter('timer', require('./app/js/filters/timer'));
 
 
 app.config(require('./app/js/config'));

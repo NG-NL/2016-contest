@@ -179,3 +179,69 @@ html {
     }
   }
 }
+
+.circle-button {
+  background: $color-black;
+  border: 2px solid $color-white;
+  border-radius: 100%;
+  color: $color-white;
+  cursor: pointer;
+  height: 50px;
+  line-height: 47px;
+  padding: 0;
+  position: fixed;
+  text-align: center;
+  transition: all .5s;
+  width: 50px;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.play {
+    left: 20px;
+    top: 20px;
+    z-index: 2;
+  }
+
+  &.timer {
+    left: calc(100% - 60px);
+    top: calc(100% - 60px);
+    z-index: 1;
+  }
+
+  &.hint {
+    left: calc(100% - 60px);
+    top: 20px;
+    z-index: 1;
+  }
+
+  &.choose-board {
+    left: 20px;
+    top: calc(100% - 60px);
+    z-index: 1;
+  }
+
+  &.pause {
+    border-width: 5px;
+    font-size: 2rem;
+    height: 150px;
+    left: calc(50% - 75px);
+    top: calc(50% - 75px);
+    width: 150px;
+
+    &.play {
+      box-shadow: 0 0 0 10000px rgba($color-black, .35);
+    }
+  }
+}
+
+.board-list {
+    position: fixed;
+    left: 0;
+    top: 200px;
+
+    ul {
+        list-style: none;
+    }
+}

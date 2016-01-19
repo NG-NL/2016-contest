@@ -4,14 +4,14 @@
         <div class="row-digits clearfix">
             <ul class="legend rows">
                 <li ng-repeat="row in board.x">
-                    {{ row.join(' - ') }}
+                    <span ng-if="playing">{{ row.join(' - ') }}</span>
                 </li>
             </ul>
         </div>
         <div class="column-digits clearfix">
             <ul>
                 <li ng-repeat="column in board.y">
-                    <span ng-repeat="n in column track by $index">{{ n }}</span>
+                    <span ng-if="playing" ng-repeat="n in column track by $index">{{ n }}</span>
                 </li>
             </ul>
         </div>
@@ -30,9 +30,21 @@
     <div>
 <div>
 <button
-    ng-click="help()"
-    style="position: fixed;bottom: 40px; right: 40px;"
-    >help</button>
+    class="circle-button play"
+    ng-class="{pause: !playing}"
+    ng-click="startPlaying();">
+    {{ playing ? 'Pause' : (timer === 0 ? 'Start game' : 'Resume')}}
+</button>
+<div class="circle-button timer" ng-class="{pause: !playing}">{{timer | timer}}</div>
+<button class="circle-button hint" ng-class="{pause: !playing}" ng-click="showHint();">Hint</button>
+<button class="circle-button choose-board" ng-class="{pause: !playing}" ng-click="showBoardSelector = !showBoardSelector">Board</button>
+<div class="board-list" ng-class="{open: showBoardSelector}">
+    <ul>
+        <li ng-repeat="board in boards">
+            {{ board.name}}
+        </li>
+    </ul>
+</div>
 <select ng-model="board"
     ng-options="board as board.name for board in boards"
     style="position: fixed;bottom: 40px; left: 40px;"
