@@ -1,3 +1,4 @@
+$color-primary: #e91e63;
 $color-white: #fff;
 $color-black: #000;
 $cell-border: #ddd;
@@ -8,7 +9,7 @@ $row-digits-backgound: rgba(#eee, .02);
 $row-digits-width: 8.5rem;
 $row-digits-color: #fff;
 $column-digits-height: 8.5rem;
-$cell-fill-background: #e91e63;
+$cell-fill-background: $color-primary;
 $cell-empty-background: $color-white;
 $cell-empty-color: #ff5722;
 
@@ -186,6 +187,7 @@ html {
   border-radius: 100%;
   color: $color-white;
   cursor: pointer;
+  font-size: .8rem;
   height: 50px;
   line-height: 47px;
   padding: 0;
@@ -205,13 +207,18 @@ html {
   }
 
   &.timer {
+    cursor: default;
     left: calc(100% - 60px);
     top: calc(100% - 60px);
     z-index: 1;
   }
 
   &.hint {
+    border-color: darken($color-white, 40%);
+    color: darken($color-white, 40%);
+    cursor: default;
     left: calc(100% - 60px);
+    opacity: .7;
     top: 20px;
     z-index: 1;
   }
@@ -237,11 +244,67 @@ html {
 }
 
 .board-list {
-    position: fixed;
-    left: 0;
-    top: 200px;
+  background: $color-white;
+  border-radius: 50px;
+  bottom: 10px;
+  height: 50px;
+  left: 20px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  transition: all .4s;
+  width: 50px;
 
-    ul {
-        list-style: none;
+  &.open {
+    border-radius: 5px;
+    bottom: 70px;
+    box-shadow: 10px -10px 200px $color-black;
+    height: 120px;
+    left: 80px;
+    opacity: 1;
+    padding: 20px;
+    width: 220px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      cursor: pointer;
+
+      &.active,
+      &:hover {
+        color: $color-primary;
+      }
     }
+  }
+}
+
+.success-message {
+    position: fixed;
+    border-radius: 5px;
+    z-index: 10;
+    background: #4CAF50;
+    width: 240px;
+    left: calc(50% - 120px);
+    top: calc(50% - 44px);
+    line-height: 2;
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.72);
+}
+
+.success-message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba($color-black, .7);
+    z-index: 9;
+    width: 0;
+    height: 100%;
+    width: 100%;
 }

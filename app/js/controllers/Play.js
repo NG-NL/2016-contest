@@ -13,14 +13,15 @@ module.exports = ['$scope', 'Board', '$rootScope', 'BoardsCollection', 'jQuery',
         $scope.boards = [];
         $scope.board = {};
 
-        $scope.$watch('board', function (value) {//I change here
+        $scope.$watch('board', function (value, previous) {
             var val = value || null;
             if (val) {
+                previous.timer = $scope.timer;
                 $scope.playing = false;
-                $scope.timer = 0;
+                $scope.timer = value.timer ? value.timer : 0;
                 var defaultFontSize = '16px';
                 $('html').css('font-size', defaultFontSize);
-                $t(resizeBoardIfNeeded, 50);
+                $t(resizeBoardIfNeeded, 50); // keep resizing if needed
             }
         });
 
@@ -28,7 +29,6 @@ module.exports = ['$scope', 'Board', '$rootScope', 'BoardsCollection', 'jQuery',
             var board = new Board(data.rows, data.columns);
             board.generate();
             board.name = data.name;
-
             $scope.boards.push(board);
         });
 
@@ -39,8 +39,13 @@ module.exports = ['$scope', 'Board', '$rootScope', 'BoardsCollection', 'jQuery',
             startTimer();
         };
 
+        $scope.changeBoard = function(board) {
+            $scope.board = board;
+            $scope.showBoardSelector = false;
+        };
+
         var startTimer = function() {
-            if ($scope.playing) {
+            if ($scope.playing && $scope.board.isValid() === false) {
                 $t(function() {
                     $scope.timer = $scope.timer + 1;
                     startTimer();

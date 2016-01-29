@@ -11,6 +11,7 @@ app.controller('Play', require('./app/js/controllers/Play'));
 
 // Factories
 app.factory('Board', require('./app/js/factories/Board'));
+app.factory('Timer', require('./app/js/factories/Timer'));
 app.factory('Square', require('./app/js/factories/Square'));
 app.factory('BoardRobot', require('./app/js/factories/BoardRobot'));
 app.factory('jQuery', ['$window', function ($window) {
