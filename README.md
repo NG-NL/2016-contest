@@ -1,46 +1,44 @@
-# NG-NL 2016 contest
+# Nonogram 
+This game is created with AngularJS 2.0 in combination with TypeScript for the ng-nl contest:
+[ng-nl contest](https://github.com/NG-NL/2016-contest)
 
-Create a web game with AngularJS that allows a player to (manually) solve a nonogram ("Japanese puzzle").
+#####Building instructions  
+1. `npm install`
+2. `gulp dev`  
 
-## Input
+*Browser opens automatically after the build is complete.*
 
-We have provided one puzzle as JS arrays of filled box count in each row and column. See `nonogramData.js` for the puzzle data.
-Make sure that your web game can play at least this puzzle.
+Or just see it here live: [Live game](http://nonogram.amberjs.nl/)
 
-## Output
+## The game  
+The default game is created with the data given by ng-nl.  
 
-The game should have a user interface so it can be played, but it's up to you how to represent it. See 
-http://www.goobix.com/games/nonograms for an example.
+**Playing the default game:**  
+* Click on a field to switch it to a filled, crossed, or blank space.  
+* Clicking on a number sets or removes a cross on the number.  
+* Drag over the field to draw a line.   
+* 'Reset' to clear the game.  
+* When the game is correct, the colors switch to green. 
+* This game cannot be deleted.
+* Click 'save state', to save the state of the game.
 
-Bonus points for:
+####Create a new game:  
 
-  - telling the player that the nonogram is solved
-  - a hint feature
-  - an automatic solver
-  - a board editor
-  - other creative extras :)
+**Random:**  
+* Clicking 'Generate random' creates a new game with random data (solvable).  
+* The default height and width is 15 fields. When values are entered between 5-100, this becomes the new height and or width.  
+* A difficulty can be set for generating random games of *easy, normal or hard.*   
 
-The game has to be implemented using AngularJS 1.x or 2.0 beta. Other dependencies, transpilers, packagers etc. are allowed.
-Make sure that your game contains clear instructions on how to start it.
+    
+**Custom:**  
+* Clicking 'Create custom' creates a blank game of 15 by 15 field, if no height or width is given.  
+* Draw a game and click 'Save custom' to save the game.  
 
-## Submitting
+**Generated games (random and custom) have extra options:**  
+* Control+click on a field, sets the correct state of that field (filled or blank).  
+* Click 'Solve Nonogram' to solve the game automatically.  
+    
+    
+    
 
-Send in your game codebase by creating a pull request on this repository. 
-If you are not able to do this, you can [mail](mailto:info@ng-nl.org) the zipped code to us.
 
-## Judging
-
-<b>Update:</b> The contest ends at Februari 1th, 2016, 00:00 CET. After this deadline, submitted games are excluded from the contest.
-The NG-NL conference organizing committee will then select the winner and two runner-ups. 
-
-## Prizes
-
-  * First prize: 3 free tickets for the NG-NL 2016 conference
-  * Second prize: 2 free tickets for NG-NL 2016 conference
-  * Third prize: 1 free ticket for NG-NL 2016 conference
-
-## Award ceremony
-
-The prizes will be handed out at the upcoming Xebia Open Kitchen on Angular. See 
-[xebia.com](https://xebia.com/events/open-kitchen-introduction-angularjs-2.0-and-contest-to-win-ng-nl-2016-tickets) for
-more information
