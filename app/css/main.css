@@ -1,0 +1,180 @@
+* {
+    font-family: Arial;
+}
+
+.smallerText {
+    font-size: 13px;
+}
+
+html {
+    height: 100%;
+    background-color: #f1f1f1;
+}
+
+.center {
+    display: table;
+    margin: auto;
+}
+
+#container {
+    min-width: 550px
+}
+
+#grid {
+    margin: 15px auto;
+    /*clear: both;*/
+}
+
+#games {
+    float: right;
+    margin-left: 20px;
+}
+
+.row {
+    float: left;
+    clear: left;
+}
+
+.blockRow {
+    border-bottom: 1px solid #3c3c3c;
+}
+
+.row:first-of-type {
+    border-top: 1px solid #3c3c3c;
+}
+.row:last-of-type {
+    border-bottom: 2px solid #3c3c3c;
+}
+.row:first-of-type.correct,
+.row:last-of-type.correct {
+    border-color: #00c200;
+}
+
+.field {
+    display: block;
+    position: relative;
+    height: 15px;
+    width: 15px;
+    border: solid thin #3c3c3c;
+    border-left: 0;
+    border-bottom: 0;
+    float: left;
+    background: white;
+}
+
+.field:first-child {
+    border-left: 2px solid #3c3c3c;
+}
+.field:last-child {
+    border-right: 2px solid #3c3c3c;
+}
+.field:first-child.correct,
+.field:last-child.correct  {
+    border-color: #00c200;
+}
+
+.filled {
+    background: #7e7678;
+}
+
+.cross::after,
+.cross::before {
+    content: "";
+    position: absolute;
+    width: 21px;
+    border-top: 1px solid #3c3c3c;
+    transform: rotate(45deg);
+    top: 7px;
+    left: -3px;
+}
+.cross::before {
+    transform: rotate(-45deg);
+}
+
+.dataField {
+    background: rgba(0, 0, 255, 0.22);
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 17px;
+    text-align: center;
+}
+.datafield *:active,
+.datafield *:hover {
+    cursor: pointer;
+}
+
+.dataField span {
+    cursor: default;
+    -webkit-user-select: none;
+}
+
+.blockColumn {
+    border-right: 2px solid #3c3c3c;
+}
+
+.correct {
+    border-color: #00c200;
+    background: rgba(0, 255, 43, 0.22);
+}
+
+.correct.filled {
+    background: rgb(0, 101, 0);
+}
+
+button:focus {outline:0;}
+
+.newGameBtn {
+    background-color: rgba(0, 0, 255, 0.22);
+    display: inline-block;
+    padding: 4px 8px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    font-weight: 400;
+    line-height: 1.4;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 255, 0.3);
+    border-radius: 4px;
+}
+
+input, select {
+    width: 88px;
+    display: inline-block;
+    margin-left: 5px;
+    line-height: 1.4;
+    padding: 4px 0;
+    border: 1px solid rgba(0, 0, 255, 0.3);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.hint {
+    color: slategrey;
+}
+
+.bottom {
+    clear: left;
+}
+
+
+#myApp {
+    margin: auto;
+}
+
+.bold {
+    font-weight: bold;
+    color: black;
+}
+
+.deleteButton {
+    background: white;
+    border: none;
+    font-weight: bold;
+    color: rgba(255, 0, 15, 0.8);
+}
+
+.saveButton {
+    background: white;
+    border: none;
+    font-weight: bold;
+    color: rgba(0, 207, 3, 0.8);
+}

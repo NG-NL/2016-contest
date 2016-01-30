@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nonogram</title>
+
+    <script src="app/libs/libs.js"></script>
+    <link rel="stylesheet" href="app/css/main.css">
+
+    <script>
+        System.config({
+            packages: {
+                app: {
+                    js: {
+                        format: 'register',
+                        defaultExtension: 'js'
+                    }
+                }
+            }
+        });
+
+        System.import('app/js/boot')
+                .then(null, console.error.bind(console));
+    </script>
+
+</head>
+
+<body>
+    <my-app class="myApp">Loading...</my-app>
+</body>
+
+</html>

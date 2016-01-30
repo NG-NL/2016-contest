@@ -1,0 +1,59 @@
+<div class="center" id="container">
+    <h1>Nonogram ng-nl</h1>
+
+    <button  *ngIf="!tempGame" class="newGameBtn smallerText" (click)="nextGame()">Play next</button>
+    <button *ngIf="!tempGame" class="newGameBtn smallerText" (click)="saveCurrentState()">Save State</button>
+    <button  *ngIf="!tempGame" class="newGameBtn" (click)="gridCtrl.showSolution(grid)">
+        {{grid.solve}}
+    </button>
+    <span class="hint smallerText">Current game: <span class="bold">{{grid.name}}</span>.
+        Total games: <span class="bold">{{games.length}}</span>
+    </span>
+
+    <br>
+    <form class="smallerText">
+        <button *ngIf="!tempGame" type="submit" class="newGameBtn" (click)="generateNew(height.value, width.value)">Generate Random
+        </button>
+        <input #height placeholder="height: 5-100">
+        <input #width placeholder="width: 5-100">
+        <label *ngIf="!tempGame">Mode:</label>
+        <select *ngIf="!tempGame" [(ngModel)]="difficulty" ngControl="difficulty">
+            <option *ngFor="#mode of gameMode">{{mode}}</option>
+        </select>
+        <br *ngIf="!tempGame">
+        <button class="newGameBtn" type="submit" (click)="createCustom(width.value, height.value)">Create Custom
+        </button>
+        <button *ngIf="tempGame" class="newGameBtn" (click)="saveCustom()">Save</button>
+        <button *ngIf="tempGame" class="newGameBtn" (click)="cancelCreateCustom()">Cancel</button>
+    </form>
+
+    <ol id="games">
+        <p class="bold">All games: </p>
+        <li class="hint" *ngFor="#game of games; #i = index">{{game.name}}
+            <button class="deleteButton" (click)="deleteGame(game.name, i)">X</button>
+            <button class="saveButton" (click)="loadGame(i)">V</button>
+        </li>
+    </ol>
+
+    <grid id="grid"
+          [ngStyle]="{'height': grid.totalHeightInPx +'px','width': grid.totalWidthInPx +'px'}"
+          (mouseleave)="gridCtrl.setUnclicked(grid)">
+        <my-row *ngFor="#row of grid.gridRows; #r=index" [ngClass]="row.state" (click)="gridCtrl.checkGrid(grid)"
+                [ngStyle]="{'min-width': grid.totalWidthInPx +'px'}">
+            <my-field *ngFor="#field of row.fields; #f=index" [ngClass]="field.state"
+                      (mousedown)="gridCtrl.fieldCtrl.switch(field); gridCtrl.fieldCtrl.solveSingle(field, $event); gridCtrl.setClicked(grid)"
+                      (mouseover)="gridCtrl.setActiveLines(grid, r-offsetTop, f-offsetLeft)"
+                      (mouseup)="gridCtrl.setUnclicked(grid)"
+                      (ngDblclick)="gridCtrl.fieldCtrl.showHint(field, !field.show)">
+                <span *ngIf="field.value">{{field.value}}</span>
+            </my-field>
+        </my-row>
+    </grid>
+
+    <p class="hint bottom smallerText" *ngFor="#text of errorTexts">NOTE: {{text}}</p>
+
+    <p class="hint bottom smallerText" *ngIf="gameData.solution">
+        Hint: Press Ctrl when clicking on a field to see the solution of that field.
+    </p>
+
+</div>
