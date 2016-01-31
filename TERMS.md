@@ -9,7 +9,7 @@ Make sure that your web game can play at least this puzzle.
 
 ## Output
 
-The game should have a user interface so it can be played, but it's up to you how to represent it. See 
+The game should have a user interface so it can be played, but it's up to you how to represent it. See
 http://www.goobix.com/games/nonograms for an example.
 
 Bonus points for:
@@ -25,13 +25,13 @@ Make sure that your game contains clear instructions on how to start it.
 
 ## Submitting
 
-Send in your game codebase by creating a pull request on this repository. 
+Send in your game codebase by creating a pull request on this repository.
 If you are not able to do this, you can [mail](mailto:info@ng-nl.org) the zipped code to us.
 
 ## Judging
 
-The contest ends at January 11th, 2016, 00:00 CET. After this deadline, submitted games are excluded from the contest.
-The NG-NL conference organizing committee will then select the winner and two runner-ups. 
+<b>Update:</b> The contest ends at Februari 1th, 2016, 00:00 CET. After this deadline, submitted games are excluded from the contest.
+The NG-NL conference organizing committee will then select the winner and two runner-ups.
 
 ## Prizes
 
@@ -41,4 +41,6 @@ The NG-NL conference organizing committee will then select the winner and two ru
 
 ## Award ceremony
 
-The prizes will be handed out at the upcoming Xebia Open Kitchen on Angular. More info soon.
+The prizes will be handed out at the upcoming Xebia Open Kitchen on Angular. See
+[xebia.com](https://xebia.com/events/open-kitchen-introduction-angularjs-2.0-and-contest-to-win-ng-nl-2016-tickets) for
+more information
