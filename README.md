@@ -1,11 +1,14 @@
 # Nonogram game
 ![Example](example.png)
 
+## [Online demo 🎮](https://elouazzani.nl/nonogram)
+
 ## Requirements
 - npm
 - node
 - browserify
 - Grunt
+
 
 
 ## Getting started
