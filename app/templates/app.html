@@ -1,0 +1,51 @@
+<div class="game blurred-bg">
+    <div class="wrapper">
+        <div class="row-digits clearfix">
+            <ul class="legend rows">
+                <li ng-repeat="row in board.rows">
+                    <span ng-if="playing">{{ row.join(' - ') }}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="column-digits clearfix">
+            <ul>
+                <li ng-repeat="column in board.columns">
+                    <span ng-if="playing" ng-repeat="n in column track by $index">{{ n }}</span>
+                </li>
+            </ul>
+        </div>
+        <ul class="board clearfix">
+            <li ng-repeat="cell in board.cells"
+                ng-class="{
+                    fill: cell.status == 1,
+                    empty: cell.status == 2,
+                    last: cell.last == true,
+                }"
+                ng-click="cell.changeStatus()"
+                >
+                <span>{{ cell.status == 2 ? '×' : '' }}</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="success-message" ng-if="board.isValid()">
+    M*therf*cker you did it!<br />
+    <span>Time: {{ timer | timer }} sec</span>
+</div>
+<div class="success-message-overlay" ng-if="board.isValid()"></div>
+
+<button
+    class="circle-button play"
+    ng-class="{pause: !playing}"
+    ng-click="startPlaying();">
+    {{ playing ? 'Pause' : (board.timer === 0 ? 'Start game' : 'Resume')}}
+</button>
+<div class="circle-button hint" ng-class="{pause: !playing}">Hint</div>
+<button class="circle-button choose-board" ng-class="{pause: !playing}" ng-click="test();showBoardSelector = !showBoardSelector">Board</button>
+<div class="board-list" ng-class="{open: showBoardSelector}">
+    <ul>
+        <li ng-repeat="b in boards" ng-class="{active: board === b}" ng-click="changeBoard(b)" ng-bind="b.name"></li>
+    </ul>
+</div>
+<div class="circle-button timer" ng-class="{pause: !playing}" ng-bind="timer | timer"></div>
