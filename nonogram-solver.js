@@ -1,6 +1,6 @@
 var Cell = require('./cell');
 
-var _ = require('./bower_components/lodash/lodash');
+var _ = require('./node_modules/lodash/index');
 
 function NonogramSolver() {
   /**

@@ -1,4 +1,4 @@
-require('./bower_components/angular/angular.min');
+require('./node_modules/angular/angular.min');
 
 var puzzle = require('./nonogramData');
 var NonogramSolver = require('./nonogram-solver');
@@ -88,21 +88,21 @@ app.component('nonogramPuzzle', {
   },
   template: '<div class="row">' +
             '  <div><span class="definition horizontal vertical">' +
-            '    <button ng-click="nonogramPuzzle.hint()">Hint</button>' +
-            '    <button ng-click="nonogramPuzzle.solve()">Solve</button>' +
+            '    <button ng-click="$ctrl.hint()">Hint</button>' +
+            '    <button ng-click="$ctrl.solve()">Solve</button>' +
             '  </span></div>' +
-            '  <nonogram-definition ng-repeat="col in nonogramPuzzle.columns" x="$index" cells="col"' +
-            '    definition="nonogramPuzzle.columnDefinitions[$index]" ng-class="{' +
+            '  <nonogram-definition ng-repeat="col in $ctrl.columns" x="$index" cells="col"' +
+            '    definition="$ctrl.columnDefinitions[$index]" ng-class="{' +
             '      borderright: ($index % 5) === 4 && !$last' +
             '  }">' +
             '  </nonogram-definition>' +
             '</div>' +
-            '<div class="row" ng-repeat="row in nonogramPuzzle.rows" ng-class="{' +
+            '<div class="row" ng-repeat="row in $ctrl.rows" ng-class="{' +
             '      borderbottom: ($index % 5) === 4 && !$last' +
             '  }">' +
-            '  <nonogram-definition y="$index" cells="row" definition="nonogramPuzzle.rowDefinitions[$index]">' +
+            '  <nonogram-definition y="$index" cells="row" definition="$ctrl.rowDefinitions[$index]">' +
             '  </nonogram-definition>' +
-            '  <nonogram-cell ng-repeat="col in nonogramPuzzle.columns" cell="row[$index]" ng-class="{' +
+            '  <nonogram-cell ng-repeat="col in $ctrl.columns" cell="row[$index]" ng-class="{' +
             '      borderright: ($index % 5) === 4 && !$last' +
             '  }">' +
             '  </nonogram-cell>' +
@@ -129,12 +129,12 @@ app.component('nonogramDefinition', {
     }
   },
   template: '<span class="definition" ng-class="{' +
-            '  horizontal: nonogramDefinition.x === undefined,' +
-            '  vertical: nonogramDefinition.y === undefined,' +
-            '  valid: nonogramDefinition.isValid(),' +
-            '  wrong: nonogramDefinition.isWrong()' +
+            '  horizontal: $ctrl.x === undefined,' +
+            '  vertical: $ctrl.y === undefined,' +
+            '  valid: $ctrl.isValid(),' +
+            '  wrong: $ctrl.isWrong()' +
             '}">' +
-            '  <span ng-repeat="def in nonogramDefinition.definition track by $index">{{def}}</span>' +
+            '  <span ng-repeat="def in $ctrl.definition track by $index">{{def}}</span>' +
             '</span>'
 });
 
@@ -146,12 +146,12 @@ app.component('nonogramCell', {
     this.val = 1;
     this.toggle = this.cell.toggle.bind(this.cell);
   },
-  template: '<span ng-click="nonogramCell.toggle()" class="cell" ng-class="{' +
-            '  unchecked : nonogramCell.cell.value === 0,' +
-            '  unknown: nonogramCell.cell.value === 1,' +
-            '  checked: nonogramCell.cell.value === 2,' +
-            '  suggested: nonogramCell.cell.suggest' +
-            '}"></span>'
+    template: '<span ng-click="$ctrl.toggle()" class="cell" ng-class="{' +
+              '  unchecked : $ctrl.cell.value === 0,' +
+              '  unknown: $ctrl.cell.value === 1,' +
+              '  checked: $ctrl.cell.value === 2,' +
+              '  suggested: $ctrl.cell.suggest' +
+              '}"></span>'
 });
 
 
